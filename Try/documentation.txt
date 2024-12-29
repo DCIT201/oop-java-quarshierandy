@@ -1,0 +1,123 @@
+
+
+
+Rental Agency Application
+Overview
+This application simulates a rental agency system that handles vehicles (Cars, Motorcycles, and Trucks), manages customers, and processes rental transactions.
+
+Class Documentation
+1. App
+Purpose: Entry point for the application.
+Methods:
+main(String[] args): Initializes the rental agency, includes vehicles, handles rentals, and manages transactions.
+2. Car
+Purpose: Represents a car available for rental.
+Extends: Vehicle
+Implements: Rentable
+Attributes:
+hasRadio (boolean): Indicates whether the car has a radio.
+Methods:
+Car(String vehicleId, String model, double baseRentalRate, boolean hasRadio): Constructor.
+boolean isHasRadio(): Returns the radio availability.
+double calculateRentalCost(int days): Calculates rental cost with additional radio charges.
+boolean isAvailableForRental(): Checks if the car is available.
+void rent(Customer customer, int days): Processes the rental if eligible.
+void returnVehicle(): Returns the car and marks it as available.
+3. Motorcycle
+Purpose: Represents a motorcycle available for rental.
+Extends: Vehicle
+Implements: Rentable
+Attributes:
+helmetCost (int): Cost of renting a helmet.
+Methods:
+Motorcycle(String vehicleId, String model, double baseRentalRate): Constructor.
+int getHelmetCost(): Returns the helmet cost.
+double calculateRentalCost(int days): Calculates rental cost including helmet cost.
+boolean isAvailableForRental(): Checks if the motorcycle is available.
+void rent(Customer customer, int days): Processes the rental if eligible.
+void returnVehicle(): Returns the motorcycle and marks it as available.
+4. Truck
+Purpose: Represents a truck available for rental.
+Extends: Vehicle
+Implements: Rentable
+Attributes:
+capacity (int): Load capacity of the truck.
+Methods:
+Truck(String vehicleId, String model, double baseRentalRate): Constructor.
+int getCapacity(): Returns the truck's capacity.
+double calculateRentalCost(int days): Calculates rental cost based on capacity.
+boolean isAvailableForRental(): Checks if the truck is available.
+void rent(Customer customer, int days): Processes the rental if eligible.
+void returnVehicle(): Returns the truck and marks it as available.
+5. Customer
+Purpose: Represents a customer renting vehicles.
+Attributes:
+name (String): Customer's name.
+age (int): Customer's age.
+Methods:
+Customer(String name, int age): Constructor.
+String getName(): Returns the customer's name.
+int getAge(): Returns the customer's age.
+boolean checkAgeEligibility(): Checks if the customer meets the minimum age requirement.
+6. Vehicle (Abstract)
+Purpose: Base class for all vehicle types.
+Implements: Rentable
+Attributes:
+vehicleId (String): Unique ID of the vehicle.
+model (String): Model of the vehicle.
+baseRentalRate (double): Base rental cost per day.
+isAvailable (boolean): Indicates rental availability.
+Methods:
+Vehicle(String vehicleId, String model, double baseRentalRate): Constructor.
+String getVehicleId(): Returns the vehicle ID.
+String getModel(): Returns the model name.
+double getBaseRentalRate(): Returns the base rental rate.
+boolean getIsAvailable(): Returns availability status.
+void setIsAvailable(boolean available): Updates availability status.
+String toString(): Returns a string representation of the vehicle.
+Abstract Methods:
+double calculateRentalCost(int days): Calculates rental cost.
+boolean isAvailableForRental(): Checks availability.
+void rent(Customer customer, int days): Processes the rental.
+void returnVehicle(): Handles vehicle return.
+7. RentalAgency
+Purpose: Manages vehicles, rentals, and transactions.
+Attributes:
+transactions (List<RentalTransaction>): List of rental transactions.
+vehicles (List<Vehicle>): List of vehicles.
+Methods:
+RentalAgency(): Constructor.
+void includeVehicle(Vehicle vehicle): Adds a vehicle to the fleet.
+void displayVehicles(): Displays all vehicles.
+void displayTransactions(): Displays all transactions.
+void rentVehicle(String vehicleId, Customer customer, int days): Rents a vehicle to a customer.
+void returnRentedVehicle(String transactionId): Processes the return of a rented vehicle.
+Vehicle findVehicleAssignedId(String vehicleId): Finds a vehicle by its ID.
+RentalTransaction findTransactionById(String transactionId): Finds a transaction by its ID.
+int getVehicles(): Returns the count of vehicles.
+8. RentalTransaction
+Purpose: Represents a rental transaction.
+Attributes:
+transactionId (String): Unique transaction ID.
+customer (Customer): Associated customer.
+vehicle (Vehicle): Rented vehicle.
+isCompleted (boolean): Indicates if the transaction is completed.
+Methods:
+RentalTransaction(String transactionId, Customer customer, Vehicle vehicle): Constructor.
+String getTransactionId(): Returns the transaction ID.
+Customer getCustomer(): Returns the customer.
+Vehicle getVehicle(): Returns the vehicle.
+boolean getHasCompleted(): Returns the completion status.
+void setIsCompleted(): Marks the transaction as completed and returns the vehicle.
+String toString(): Returns a string representation of the transaction.
+9. Rentable (Interface)
+Purpose: Defines rental-related behaviors.
+Methods:
+void rent(Customer customer, int days): Handles vehicle rental.
+void returnVehicle(): Handles vehicle return.
+Usage
+Create a RentalAgency instance.
+Add vehicles using includeVehicle().
+Rent vehicles to customers using rentVehicle().
+Return vehicles using returnRentedVehicle().
+Display vehicles and transactions using displayVehicles() and displayTransactions().
